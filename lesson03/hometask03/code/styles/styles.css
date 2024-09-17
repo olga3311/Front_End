@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.red_head {
+    height: 100px;
+    background-color: red;
+    font-size: 28px;
+    text-align: center;
+    padding: 30px;
+}
+
+.head {
+    font-size: 24px;
+    color: antiquewhite;
+    text-align: center;
+
+}
+
+.main {
+    background-color: rgb(89, 89, 237);
+    font-size: 18px;
+    height: 300px;
+    letter-spacing: -1;
+    color: white;
+    text-align: justify;
+}
+
+.footer {
+    position: absolute;
+    background-color: green;
+    font-size: 18px;
+    height: 100px;
+    color: white;
+}

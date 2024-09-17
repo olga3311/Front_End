@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+
+}
+
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+    overflow: hidden;
+}
+
+.head {
+    background-color: #b37070;
+    height: 150px;
+    text-align: center;
+    line-height: 20vh;
+    color: white;
+    font-size: 24px;
+    width: 100vw;
+    border-bottom: 5px solid white;
+    top: 0;
+
+}
+
+.main {
+    background-color: #c999db;
+    color: white;
+    text-align: center;
+    padding: 40px;
+    justify-content: center;
+    font-size: 24px;
+    width: 100vw;
+    height: calc(100vh - 300px);
+    position: relative;
+
+}
+
+.foot {
+    background-color: #b37070;
+    color: white;
+    height: 150px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 20vh;
+    border-top: 5px solid white;
+    bottom: 0;
+}
