@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    /*flex-direction: row;*/
+    height: 300px;
+}
+
+.block_red {
+    width: calc(100vw/5);
+    background-color: red;
+}
+
+.block_green {
+    width: calc(100vw/5);
+    background-color: green;
+}
+
+.block_blue {
+    width: calc(100vw/5);
+    background-color: blue;
+}
+
+.block_yellow {
+    width: calc(100vw/5);
+    background-color: yellow;
+}
+
+.block_black {
+    width: calc(100vw/5);
+    background-color: black;
+}
