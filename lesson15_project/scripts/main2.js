@@ -4,19 +4,32 @@ const buttonAll = document.querySelector("#all");
 const buttonCreate = document.querySelector("#create");
 const taskInput = document.querySelector(".task-input");
 const list = document.querySelector(".list");
+
 const arrElements = [];
 // let toDoFilter = [false,true];
 
+const buttonStatus = document.querySelector(".status");
+buttonStatus.addEventListener("click",displayFilteredTasks);
+
+function displayFilteredTasks (evt){
+evt.target.id
+//console.log(evt.target);
+
+}
+
+
 function addElement(name) {
     const obj = {};
-    //  let val = `list${Math.floor(Math.random() * 500)}`
-    let val = `list${arrElements.length}`
-    obj.key = val;
+    // let val = `list${Math.floor(Math.random() * 500)}`
+   // let val = `list${arrElements.length}`;
+    //let val = 1;
+   // obj.key = val;
     obj.name = name;
     obj.value = false; // false == uncompleted
     arrElements.push(obj);// добавили один объект в м.
     //  alert(arrElements.length)
 };
+
 buttonCreate.addEventListener("click", function () {
     addElement(taskInput.value);
     displayList("all");
@@ -55,7 +68,7 @@ function displayList(filterParam) {
     elementsToShow.forEach(element => {
         const newListItemElement = document.createElement("li");
         newListItemElement.textContent = element.name;
-        newListItemElement.id = element.key;
+       // newListItemElement.id = element.key;
         newListItemElement.classList.add("list-item");
         if (element.value) {
             newListItemElement.classList.add("list-item_done");
@@ -63,9 +76,7 @@ function displayList(filterParam) {
         // применяет стиль с перечеркиванием к выполненному элементу
 
         newListItemElement.addEventListener("click", function () {
-            arrElements.forEach(element => {
-                if (element.key == newListItemElement.id) { element.value = !element.value; }
-            })
+           element.value = !element.value;
             displayList("all");
             // применяет  функцию , которая меняет статус на противоположный
 
