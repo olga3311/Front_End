@@ -55,7 +55,7 @@ function displayList(filterParam) {
 function changeStatus(id) {
     //alert(id);
     arrElements.forEach(element => {
-        if (element.key == id) { element.value = !element.value; }
+        if (element.key == id) { element.value = !element.value }
     })
 }}
 
