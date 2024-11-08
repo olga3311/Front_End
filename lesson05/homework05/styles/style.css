@@ -7,7 +7,7 @@
     margin: 10px;
     height: 100vh;
     width: 100wh;
-    background: linear-gradient(white 50%, grey, black);
+    background: linear-gradient(white 50%, grey, #0b0303);
     border: 3px solid black;
     border-radius: 5px;
 

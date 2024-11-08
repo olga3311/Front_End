@@ -20,9 +20,9 @@ let players = [
 
 const addGoal = (human) => {
     const result = { ...human };
-    human.goals = Math.floor(Math.random() * 50);
-    result.goals = human.goals;
-
+   // human.goals = Math.floor(Math.random() * 50);
+   // result.goals = human.goals;
+result.goals = Math.floor(Math.random() * 50);
     return result;
 }
 const newPlayers = players.map(addGoal);

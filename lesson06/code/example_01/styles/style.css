@@ -1,0 +1,17 @@
+.container{
+     background-color: aliceblue;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   gap: 30px;
+   flex-wrap: wrap;
+  /* height: 50vh;*/
+ /* align-content: flex-start;*/
+}
+.item{
+    height: 100px;
+    width: 100px;
+    background-color: antiquewhite;
+    border: 2px solid red;
+
+}

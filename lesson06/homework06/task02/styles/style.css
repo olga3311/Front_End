@@ -26,10 +26,7 @@
 }
 
 .container {
-    height: calc(100vh - 350px);
-    width: 100vw;
     background-color: bisque;
-    position: relative;
     display: flex;
     position: relative;
     height: 100%;
@@ -42,12 +39,12 @@
     border: solid 3px white;
     background-color: rgb(226, 167, 226);
     top: 0;
-    width: calc(100%/2);
+   /* width: calc(100%/2);*/
     display: flex;
     flex-direction: column;
     position: relative;
     top: 0;
-
+flex-grow: 3;
     
 }
 
@@ -65,7 +62,7 @@
     border: solid 5px white;
     background-color: rgb(203, 240, 129);
     height: calc(100vh - 350px);
-    width: calc(100%/2);
+   flex-grow: 1;
 }
 
 .footer {

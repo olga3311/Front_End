@@ -48,7 +48,7 @@ console.log("=======Task03=======");
 
 let arrayC = [];
 for (let i = 0; i < 10; i++) {
-    arrayC.push(Math.round(Math.random() * 100) + 1);
+    arrayC.push(Math.round(Math.random() * 75) + 1);
 }
 console.log("Array C: " + arrayC);
 

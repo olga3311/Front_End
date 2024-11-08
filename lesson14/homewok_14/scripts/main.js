@@ -63,6 +63,7 @@ function createAndAddnewListItem(element) {
   const newListItemElement = document.createElement('li');
   newListItemElement.innerHTML = "<a href=\"" + element.href + "\"> " + element.text + "</a>";
   AllListElement.append(newListItemElement);
+  arrElements.push(newListItemElement);
 }
 
 // console.log(createAndAddnewListItem(links));

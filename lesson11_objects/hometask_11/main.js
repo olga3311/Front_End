@@ -91,20 +91,16 @@ console.log("======Task_04*======");
 
 function objectToAComplicatedObject(object) {
     const result = {};
-
     const array = Object.entries(object);
     //console.log(array);
-
 
     array.forEach(element => {
         let secondPart = {};
 
         secondPart["value"] = element[1];
         secondPart["type"] = typeof (element[1]);
-
         result[element[0]] = secondPart;
     });
-
     return result;
 }
 
@@ -114,13 +110,83 @@ console.log(objectToAComplicatedObject(object));
 
 console.log("======Task_05*======");
 //5*. Напишите функцию, которая посчитает сумму к оплате в корзине в интернет магазине комп техники. 
-//На вход функция получает обьект корзины (пример ниже - наименование товара и количество, а также обьект с ценами на товары, с доп уровнями вложености). К названиям товаров привязываться не стоит,
-// они могут быть другими, в примере просто пример.
-//const bucket = { display: 20, videocard: 100, cpu: 40, }
-//const products = { warehouse1: { videocard: 12.5, }, warehouse2: { display: 56.2, cpu: 150, }, }
-//calculateCost(bucket, products); // результат = 8374
+//На вход функция получает обьект корзины (пример ниже - наименование товара и количество,
+//а также обьект с ценами на товары, с доп уровнями вложености). К названиям товаров привязываться не стоит,
+//они могут быть другими, в примере просто пример.
+
+const basket = {
+    display: 20,
+    videocard: 100,
+    cpu: 40,
+}
+const products = {
+    warehouse1: {
+        videocard: 12.5,
+    },
+    warehouse2: {
+        display: 56.2,
+        cpu: 150,
+    },
+}
+//products.warehouse1;
+const getSum = (basket, prices) => {
+    let allPricesInOne = {}
+    const arrOfWArehousesNames = Object.keys(prices);
+    arrOfWarehousesNames.forEach(
+        (warehouseName) =>{
+          allPricesInOne =   {...prices[warehouseName], allPricesInOne}
+        }
+    );
+
+console.log(allPricesInOne);
+
+const arrayOfProductsInBasket = Object.keys(basket);
+arrayOfProductsInBasket.forEach(
+
+    (product) => {
+       summ = summ + (basket[product] * allPricesInOne[product]);
+    }
+);
+    console.log(summ);
+return summ;
+
+}
+
+getSum(basket, products);
+
+// var2 
+const bucket1 = {
+    display: 20,
+    videocard: 100,
+    cpu: 40,
+}
+const products1 = {
+    warehouse1: {
+        videocard: 12.5,
+    },
+    warehouse2: {
+        display: 56.2,
+        cpu: 150,
+    },
+}
+const calculateCost = (bucket1, products1) => {
+    let totalKost = 0;
+
+    for (let product in bucket1) {
+        const quantity = bucket[product];
+        for (let warehouse in products) {
+            const price = products[warehouse][product];
+            if (price) {
+                totalKost += quantity * price;
+            }
+        }
+    }
+    return totalKost;
+}
+const total = calculateCost(bucket1, products1);
 
 console.log("======Task_06*======");
+
 //6*. Напишите функцию, которая сравнивает 2 объекта, и возвращает результат true если они равны или false в противном случаеФункция принимает 2 аргумента - объекты. Объекты в качестве значений свойств могут иметь только примитивные типы данных
 //Объекты равные, если их содержание (пары ключ-значение) совпадает, количество свойств также должно совпадать. Порядок не важен.
 //function compareObjects(firstObj, secondObj) { // тут ваш код }
@@ -129,3 +195,6 @@ console.log("======Task_06*======");
 //const obj2 = { name: 'Mark', age: 17, };
 //const obj3 = { name: 'Mark', age: 17, student: false, };
 //const obj4 = { name: 'John', age: 17, };
+
+
+
