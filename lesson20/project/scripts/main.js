@@ -35,12 +35,9 @@ function displayInfoAboutWeather(localtime, name, temp_c, text, icon) {
     conditionContent.textContent = text;
 }
 
-
 const getWeekWeather = async () => {
     const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7&aqi=no&alerts=no`);
     const data = await response.json();
-
-    
     displayInfoAboutWeek(arrayOfDailyForecast(data.forecast.forecastday));
 };
 
@@ -53,7 +50,7 @@ function displayInfoAboutWeek(OneWeekForecast) {
     for (const [arrElemIndex, divDay] of days.entries()) {
         const img = divDay.querySelector("img");
         img.src = OneWeekForecast[arrElemIndex].icon;
-        
+
         const date = divDay.querySelector(".text-weekDay");
         date.innerHTML = OneWeekForecast[arrElemIndex].date;
 
@@ -63,15 +60,10 @@ function displayInfoAboutWeek(OneWeekForecast) {
         const tempMin = divDay.querySelectorAll(".text-weekDay");
         tempMin[1].innerHTML = OneWeekForecast[arrElemIndex].mintemp;
 
-
     }
-
-
 };
 
-
 function arrayOfDailyForecast(forecastDays) {
-
     const OneDayForecast = (forecastOneDay) => {
         const resultObj = {};
         resultObj.maxtemp = forecastOneDay.day.maxtemp_c;
@@ -80,7 +72,6 @@ function arrayOfDailyForecast(forecastDays) {
         resultObj.icon = forecastOneDay.day.condition.icon;
         return resultObj;
     }
-
     const OneWeekForecast = forecastDays.map(OneDayForecast);
     return OneWeekForecast;
     //console.log( OneWeekForecast);
