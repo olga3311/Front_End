@@ -14,13 +14,13 @@ const getToDoTasks = async () => {
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/todos');
         const body = await response.json();
-
+        console.log(body);
         const transformedTasks = body.slice(0, 15).map((task) => ({
-            name: task.value,
+            name: task.title,       // был не title а value
             value: task.completed
         }))
-
-        arrElements = [...arrElements, ...body.slice(0, 15)];
+        console.log(transformedTasks);
+        arrElements = [...arrElements, ...transformedTasks]//...body.slice(0, 15)];
         displayList("all");
     } catch (err) {
         console.error("Ошибка!", err);
@@ -79,18 +79,18 @@ buttonCreate.addEventListener("click", function () {
 });
 
 
-const oneButtonAll = ["Все", "Выполненные ", "Невыполненные"];
-let currIndex = 0;
-let index = 1;
+// const oneButtonAll = ["Все", "Выполненные ", "Невыполненные"];
+// let currIndex = 0;
+// let index = 1;
 
-buttonAll.addEventListener("click", function () {
-    currIndex = index;
-    index = (index + 1) % oneButtonAll.length;
-    buttonAll.textContent = oneButtonAll[index];  //  текст кнопки на текущий элемент массива
-    if (currIndex == 0) { displayList("all") }
-    if (currIndex == 1) { displayList("completed") }
-    if (currIndex == 2) { displayList("uncompleted") }
-})
+// buttonAll.addEventListener("click", function () {
+//     currIndex = index;
+//     index = (index + 1) % oneButtonAll.length;
+//     buttonAll.textContent = oneButtonAll[index];  //  текст кнопки на текущий элемент массива
+//     if (currIndex == 0) { displayList("all") }
+//     if (currIndex == 1) { displayList("completed") }
+//     if (currIndex == 2) { displayList("uncompleted") }
+// })
 
 buttonAll.addEventListener("click", function () { displayList("all") });
 buttonCompleted.addEventListener("click", function () { displayList("completed") });

@@ -18,6 +18,7 @@ const getWeather = async () => {
 }
 getWeather();
 
+
 function displayInfoAboutWeather(localtime, name, temp_c, text, icon) {
     const cityName = document.querySelector('.city-text');
     cityName.textContent = name;
@@ -35,6 +36,7 @@ function displayInfoAboutWeather(localtime, name, temp_c, text, icon) {
     conditionContent.textContent = text;
 }
 
+
 const getWeekWeather = async () => {
     const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7&aqi=no&alerts=no`);
     const data = await response.json();
@@ -49,27 +51,35 @@ function displayInfoAboutWeek(OneWeekForecast) {
     //days.forEach((day) => { })
     for (const [arrElemIndex, divDay] of days.entries()) {
         const img = divDay.querySelector("img");
-        img.src = OneWeekForecast[arrElemIndex].icon;
+        img.src = OneWeekForecast[arrElemIndex+1].icon;
 
-        const date = divDay.querySelector(".text-weekDay");
-        date.innerHTML = OneWeekForecast[arrElemIndex].date;
+        const date = divDay.querySelectorAll(".text-weekDay");
+        date[0].innerHTML = OneWeekForecast[arrElemIndex+1].date;
+        date[1].innerHTML = OneWeekForecast[arrElemIndex+1].mintemp;
 
         const tempMax = divDay.querySelector(".temperature-max-text");
-        tempMax.innerHTML = OneWeekForecast[arrElemIndex].maxtemp;
+        tempMax.innerHTML = OneWeekForecast[arrElemIndex+1].maxtemp;
 
-        const tempMin = divDay.querySelectorAll(".text-weekDay");
-        tempMin[1].innerHTML = OneWeekForecast[arrElemIndex].mintemp;
+        // const tempMin = divDay.querySelectorAll(".text-weekDay");
+        //tempMin[1].innerHTML = OneWeekForecast[arrElemIndex].mintemp;
 
     }
 };
 
 function arrayOfDailyForecast(forecastDays) {
+    //const daysArr = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const OneDayForecast = (forecastOneDay) => {
         const resultObj = {};
         resultObj.maxtemp = forecastOneDay.day.maxtemp_c;
         resultObj.mintemp = forecastOneDay.day.mintemp_c;
-        resultObj.date = forecastOneDay.date;
         resultObj.icon = forecastOneDay.day.condition.icon;
+        //resultObj.date = forecastOneDay.date;
+        //resultObj.date = daysArr[new Date(forecastOneDay.date).getDay()]
+        resultObj.date = new Intl.DateTimeFormat(navigator.language, {
+            weekday: "short",
+          }).format(new Date(forecastOneDay.date));
+        //console.log(new Date(forecastOneDay.date).getDay())
+        
         return resultObj;
     }
     const OneWeekForecast = forecastDays.map(OneDayForecast);
